@@ -1,6 +1,6 @@
 import dagster as dg
 
-from dagster_essentials.completed.lesson_8.defs.jobs import (
+from dagster_essentials.defs.jobs import (
     trip_update_job,
     weekly_update_job,
 )
