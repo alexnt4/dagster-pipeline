@@ -5,6 +5,10 @@ env/
 ENV/
 
 # Dagster
+# En lugar de poner el nombre exacto, usa patrones:
+tmp_dagster*
+tmp_dagster_*/
+**/tmp_dagster*
 .tmp_dagster_home_fgvdl_ql/
 dagster_home/
 .dagster/
