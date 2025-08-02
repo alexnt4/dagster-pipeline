@@ -1,17 +1,17 @@
-# Pipeline de Datos NYC Taxi con Dagster
+# NYC Taxi Data Pipeline with Dagster
 
-Este repositorio contiene un pipeline ELT desarrollado con Dagster utilizando el dataset de NYC Taxi, implementando las funcionalidades principales de orquestación de datos incluyendo:
+This repository contains an ELT pipeline developed with Dagster using the NYC Taxi dataset, implementing the main data orchestration functionalities including:
 
-1. Orquestación declarativa basada en Assets
-2. Procesamiento ELT con DuckDB
-3. Backfill de datos usando Particiones
-4. Configuración de Schedules y Jobs
-5. Políticas de Auto Materialización
-6. Visualización de métricas y análisis
+1. Declarative orchestration based on Assets
+2. ELT processing with DuckDB
+3. Data backfill using Partitions
+4. Schedule and Job configuration
+5. Auto Materialization policies
+6. Metrics visualization and analysis
 
-## Instalación
+## Installation
 
-Clona el repositorio e instala las dependencias usando uv:
+Clone the repository and install dependencies using uv:
 
 ```bash
 git clone https://github.com/alexnt4/dagster-pipeline
@@ -19,61 +19,61 @@ cd dagster-pipeline
 uv sync
 ```
 
-Esto creará automáticamente el entorno virtual e instalará todas las dependencias necesarias.
+This will automatically create the virtual environment and install all necessary dependencies.
 
-Luego, inicia el servidor web de Dagster:
+Then, start the Dagster web server:
 
 ```bash
 dg dev
 ```
 
-Abre http://localhost:3000 en tu navegador para acceder a la interfaz de Dagster.
+Open http://localhost:3000 in your browser to access the Dagster interface.
 
-## Arquitectura del Sistema
-
-<div align="center">
-  <img src="img/archi.png" alt="Arquitectura del pipeline" width="500">
-</div>
-
-
-El pipeline procesa datos de taxis de NYC siguiendo un patrón ELT (Extract, Load, Transform):
-
-- **Extracción**: Datos de viajes de taxi desde archivos fuente
-- **Carga**: Almacenamiento en DuckDB como data warehouse
-- **Transformación**: Agregaciones y métricas calculadas
-- **Visualización**: Dashboards y gráficos para análisis
-
-### Assets Principales
-
-- `taxi_zones_file` / `taxi_zones`: Datos de zonas de taxi de NYC
-- `taxi_trips_file` / `taxi_trips`: Registros de viajes individuales
-- `manhattan_stats`: Estadísticas específicas de Manhattan
-- `manhattan_map`: Visualización geográfica de datos
-- `trips_by_week`: Análisis temporal agregado por semana
-
-## Características Implementadas
-
-### 📊 **Assets y Materialización**
-Los assets representan objetos en almacenamiento persistente que capturan el estado de los datos en diferentes etapas del pipeline.
-
+## System Architecture
 
 <div align="center">
-  <img src="img/dags.png" alt="Assets y dependencias" width="800">
+ <img src="img/archi.png" alt="Pipeline architecture" width="500">
 </div>
 
+The pipeline processes NYC taxi data following an ELT (Extract, Load, Transform) pattern:
 
-### 🔄 **Particiones**
-Implementación de particionado temporal para procesar datos históricos de manera eficiente y permitir backfills selectivos.
+- **Extraction**: Taxi trip data from source files
+- **Load**: Storage in DuckDB as data warehouse
+- **Transform**: Aggregations and calculated metrics
+- **Visualization**: Dashboards and charts for analysis
 
-### ⏰ **Schedules y Jobs**
-Configuración de ejecuciones automáticas y programadas para mantener los datos actualizados.
+### Main Assets
 
-### 🎯 **Auto Materialización**
-Políticas automáticas que determinan cuándo regenerar assets basándose en dependencias y cambios upstream.
+- `taxi_zones_file` / `taxi_zones`: NYC taxi zones data
+- `taxi_trips_file` / `taxi_trips`: Individual trip records
+- `manhattan_stats`: Manhattan-specific statistics
+- `manhattan_map`: Geographic data visualization
+- `trips_by_week`: Weekly aggregated temporal analysis
 
-### 📈 **Visualización**
+## Implemented Features
+
+### Assets and Materialization
+
+Assets represent objects in persistent storage that capture the state of data at different pipeline stages.
 
 <div align="center">
-  <img src="img/map.png" alt="Mapa de Manhattan con datos de taxi" width="400">
+ <img src="img/dags.png" alt="Assets and dependencies" width="800">
 </div>
 
+### Partitions
+
+Implementation of temporal partitioning to efficiently process historical data and enable selective backfills.
+
+### ⏰ Schedules and Jobs
+
+Configuration of automatic and scheduled executions to keep data up to date.
+
+### Auto Materialization
+
+Automatic policies that determine when to regenerate assets based on dependencies and upstream changes.
+
+### Visualization
+
+<div align="center">
+ <img src="img/map.png" alt="Manhattan map with taxi data" width="400">
+</div>
