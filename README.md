@@ -64,7 +64,7 @@ Assets represent objects in persistent storage that capture the state of data at
 
 Implementation of temporal partitioning to efficiently process historical data and enable selective backfills.
 
-### ⏰ Schedules and Jobs
+###  Schedules and Jobs
 
 Configuration of automatic and scheduled executions to keep data up to date.
 
